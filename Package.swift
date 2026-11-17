@@ -5,28 +5,13 @@ import PackageDescription
 
 let package = Package(
     name: "LogKit",
+	platforms: [.iOS(.v15), .macOS(.v27), .visionOS(.v27), .watchOS(.v27), .tvOS(.v27),],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "LogKit",
-            targets: ["LogKit"]
-        ),
+        .library( name: "LogKit", targets: ["LogKit"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "LogKit",
-            swiftSettings: [
-                .enableUpcomingFeature("ApproachableConcurrency"),
-            ],
-        ),
-        .testTarget(
-            name: "LogKitTests",
-            dependencies: ["LogKit"],
-            swiftSettings: [
-                .enableUpcomingFeature("ApproachableConcurrency"),
-            ],
-        ),
-    ]
+        .target(name: "LogKit"),
+        .testTarget(name: "LogKitTests", dependencies: ["LogKit"]),
+    ],
+	swiftLanguageModes: [.v6]
 )
